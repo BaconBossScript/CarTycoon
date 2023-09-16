@@ -1,0 +1,42 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | 🔥 BIKES! 🔥 Car Dealership Tycoon", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+_G.ez = true
+
+function ez()
+      while _G.ez == true do
+        local baseName = "Helmet"
+
+     for i = 1, 80 do
+     local args = {
+     [1] = workspace:WaitForChild("HelmetHunt"):WaitForChild(baseName .. i):WaitForChild("Helmet" .. baseName .. i)
+     }
+     game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Collectibles"):WaitForChild("TryToCollect"):FireServer(unpack(args))
+     wait(0.1)
+    end
+    end
+end
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+MainTab:AddLabel("Note: You Must Fly Around The Map")
+
+MainTab:AddButton({
+	Name = "Inf Yeild",
+	Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
+}) 
+
+MainTab:AddToggle({
+	Name = "Auto Collect Helmet",
+	Default = false,
+	Callback = function(Value)
+		_G.ez = Value
+        ez()
+	end    
+})
